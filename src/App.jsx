@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Mail, Linkedin, ExternalLink, Code, Smartphone, Headset, Globe, Briefcase, Award, Book, Camera, Github } from 'lucide-react';
+import { Mail, Linkedin, ExternalLink, Code, Smartphone, Headset, Globe, Briefcase, Award, Book, Camera, Github, Menu, X } from 'lucide-react';
 
 const PortfolioWebsite = () => {
   const [activeCategory, setActiveCategory] = useState('XR');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Project data based on Yağız Eraslan's portfolio
   const projects = {
@@ -284,189 +285,276 @@ const PortfolioWebsite = () => {
     { id: 'Photography', name: 'Photography', icon: <Camera size={18} /> },
   ];
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="flex h-screen bg-gray-100 text-gray-800 overflow-hidden">
-      {/* Left Sidebar - Bento.me style */}
-      <div className="w-80 bg-white p-6 shadow-md overflow-y-auto">
-        <div className="flex flex-col items-center mb-8">
-          <div className="w-32 h-32 rounded-full bg-gray-200 mb-4 overflow-hidden">
-            <img src="https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Portfolio-1.jpg" alt="Yağız Eraslan" className="w-full h-full object-cover" />
+    <div className="min-h-screen bg-gray-100 text-gray-800">
+      {/* Mobile Menu Button */}
+      <div className="lg:hidden fixed top-4 left-4 z-50">
+        <button
+          onClick={toggleSidebar}
+          className="bg-white p-2 rounded-md shadow-md hover:bg-gray-50 transition-colors"
+        >
+          {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      <div className="flex flex-col lg:flex-row min-h-screen">
+        {/* Sidebar Overlay for Mobile */}
+        {isSidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+
+        {/* Left Sidebar */}
+        <div className={`
+          fixed lg:relative lg:translate-x-0 lg:block
+          w-80 bg-white shadow-md z-40 h-full lg:h-auto
+          transform transition-transform duration-300 ease-in-out
+          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+          overflow-y-auto
+        `}>
+          <div className="p-6">
+            <div className="flex flex-col items-center mb-8">
+              <div className="w-32 h-32 rounded-full bg-gray-200 mb-4 overflow-hidden">
+                <img 
+                  src="https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Portfolio-1.jpg" 
+                  alt="Yağız Eraslan" 
+                  className="w-full h-full object-cover" 
+                />
+              </div>
+              <h1 className="text-2xl font-bold">Yağız Eraslan</h1>
+              <p className="text-gray-600 text-center mt-1">Unity Developer | XR | Mobile | Web</p>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-3">About Me</h2>
+              <p className="text-gray-600 text-sm">
+                Skilled Unity Developer with 7+ years of experience in Mobile and VR/AR development.
+                Proven ability to create and implement game functionality, optimize performance,
+                and deliver high-quality applications for platforms including Meta Store, Play Store and Steam.
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-3">Skills</h2>
+              <div className="flex flex-wrap gap-2">
+                {['Unity', 'C#', 'XR Development', 'VR/AR/MR', 'Mobile Development', 'WebGL', 'React.js', 'Node.js', 'AI Integration', 'Addressables', 'Photon Fusion', 'SteamVR', 'Meta SDK', 'Firebase', 'Git', 'Performance Optimization', 'Training Simulations', 'B2B Solutions'].map((skill) => (
+                  <span key={skill} className="bg-gray-200 px-2 py-1 rounded-md text-xs">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-3">Experience</h2>
+              <div className="space-y-3">
+                <div>
+                  <p className="font-medium">Freelance Software Developer</p>
+                  <p className="text-gray-600 text-sm">UpWork, 2024-Present</p>
+                </div>
+                <div>
+                  <p className="font-medium">Unity Team Leader</p>
+                  <p className="text-gray-600 text-sm">Global Future Designs and Solutions Inc., 2023-2024</p>
+                </div>
+                <div>
+                  <p className="font-medium">Unity Developer</p>
+                  <p className="text-gray-600 text-sm">Global Future Designs and Solutions Inc., 2021-2023</p>
+                </div>
+                <div>
+                  <p className="font-medium">Coding Instructor</p>
+                  <p className="text-gray-600 text-sm">PRONOVA Digital Imaging Technologies, 2019-2020</p>
+                </div>
+                <div>
+                  <p className="font-medium">STEM Instructor</p>
+                  <p className="text-gray-600 text-sm">PRONOVA Digital Imaging Technologies, 2017-2019</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-3">Education</h2>
+              <div>
+                <p className="font-medium">Bachelor of Sciences, Astronomy and Space Sciences</p>
+                <p className="text-gray-600 text-sm">Ankara University, Science Faculty, 2012-2016</p>
+              </div>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-3">Hardware</h2>
+              <p className="text-gray-600 text-sm">
+                Development experience with Meta Quest 2/3, Pico 4, HTC Vive Pro, and HTC Vive Cosmos headsets
+              </p>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-lg font-semibold mb-3">Certifications</h2>
+              <div className="space-y-1">
+                <div className="text-gray-600 text-sm flex items-start gap-2">
+                  <Award size={14} className="mt-0.5 flex-shrink-0" /> 
+                  <span>XR AI Hack İstanbul 2024 Winner</span>
+                </div>
+                <div className="text-gray-600 text-sm flex items-start gap-2">
+                  <Award size={14} className="mt-0.5 flex-shrink-0" /> 
+                  <span>Unity: 3D Level Design - LinkedIn (2020)</span>
+                </div>
+                <div className="text-gray-600 text-sm flex items-start gap-2">
+                  <Award size={14} className="mt-0.5 flex-shrink-0" /> 
+                  <span>Unity Scripting and Publishing - LinkedIn (2020)</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-lg font-semibold mb-3">Contact</h2>
+              <div className="flex flex-col gap-3">
+                <a 
+                  href="mailto:yagizeraslan@gmail.com" 
+                  className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"
+                >
+                  <Mail size={16} className="flex-shrink-0" />
+                  <span className="text-sm break-all">yagizeraslan@gmail.com</span>
+                </a>
+                <a 
+                  href="https://www.linkedin.com/in/yagizeraslan" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"
+                >
+                  <Linkedin size={16} className="flex-shrink-0" />
+                  <span className="text-sm break-all">linkedin.com/in/yagizeraslan</span>
+                </a>
+                <div className="text-gray-700 flex items-center gap-2">
+                  <Book size={16} className="flex-shrink-0" />
+                  <span className="text-sm">+90 536 957 2042</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <h1 className="text-2xl font-bold">Yağız Eraslan</h1>
-          <p className="text-gray-600 text-center mt-1">Unity Developer | XR | Mobile | Web</p>
         </div>
 
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-3">About Me</h2>
-          <p className="text-gray-600 text-sm">
-            Skilled Unity Developer with 7+ years of experience in Mobile and VR/AR development.
-            Proven ability to create and implement game functionality, optimize performance,
-            and deliver high-quality applications for platforms including Meta Store, Play Store and Steam.
-          </p>
-        </div>
+        {/* Right Content Area */}
+        <div className="flex-1 flex flex-col lg:ml-0 ml-0">
+          {/* Navigation */}
+          <div className="bg-white p-4 shadow-sm mt-16 lg:mt-0">
+            <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => {
+                    setActiveCategory(category.id);
+                    setIsSidebarOpen(false);
+                  }}
+                  className={`px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 whitespace-nowrap transition-colors flex-shrink-0 ${
+                    activeCategory === category.id
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {category.icon}
+                  <span className="hidden sm:inline">{category.name}</span>
+                  <span className="sm:hidden">{category.name.split(' ')[0]}</span>
+                </button>
+              ))}
+            </div>
+          </div>
 
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-3">Skills</h2>
-          <div className="flex flex-wrap gap-2">
-            {['Unity', 'C#', 'XR Development', 'VR/AR/MR', 'Mobile Development', 'WebGL', 'React.js', 'Node.js', 'AI Integration', 'Addressables', 'Photon Fusion', 'SteamVR', 'Meta SDK', 'Firebase', 'Git', 'Performance Optimization', 'Training Simulations', 'B2B Solutions'].map((skill) => (
-              <span key={skill} className="bg-gray-200 px-2 py-1 rounded-md text-xs">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
+          {/* Projects Grid */}
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-gray-50">
+            <h2 className="text-2xl font-bold mb-6 text-center lg:text-left">
+              {categories.find(c => c.id === activeCategory)?.name}
+            </h2>
 
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-3">Experience</h2>
-          <div className="mb-3">
-            <p className="font-medium">Freelance Software Developer</p>
-            <p className="text-gray-600 text-sm">UpWork, 2024-Present</p>
-          </div>
-          <div className="mb-3">
-            <p className="font-medium">Unity Team Leader</p>
-            <p className="text-gray-600 text-sm">Global Future Designs and Solutions Inc., 2023-2024</p>
-          </div>
-          <div className="mb-3">
-            <p className="font-medium">Unity Developer</p>
-            <p className="text-gray-600 text-sm">Global Future Designs and Solutions Inc., 2021-2023</p>
-          </div>
-          <div className="mb-3">
-            <p className="font-medium">Coding Instructor</p>
-            <p className="text-gray-600 text-sm">PRONOVA Digital Imaging Technologies, 2019-2020</p>
-          </div>
-          <div className="mb-3">
-            <p className="font-medium">STEM Instructor</p>
-            <p className="text-gray-600 text-sm">PRONOVA Digital Imaging Technologies, 2017-2019</p>
-          </div>
-        </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 justify-items-center max-w-none">
+              {projects[activeCategory].map((project) => (
+                <div 
+                  key={project.id} 
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 flex flex-col w-full max-w-sm"
+                >
+                  {/* Image container with consistent aspect ratio */}
+                  <div className="w-full aspect-[3/2] overflow-hidden bg-gray-100">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-200 hover:scale-105"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/api/placeholder/480/320';
+                      }}
+                    />
+                  </div>
 
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-3">Education</h2>
-          <div className="mb-3">
-            <p className="font-medium">Bachelor of Sciences, Astronomy and Space Sciences</p>
-            <p className="text-gray-600 text-sm">Ankara University, Science Faculty, 2012-2016</p>
-          </div>
-        </div>
-
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-3">Hardware</h2>
-          <p className="text-gray-600 text-sm">
-            Development experience with Meta Quest 2/3, Pico 4, HTC Vive Pro, and HTC Vive Cosmos headsets
-          </p>
-        </div>
-
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-3">Certifications</h2>
-          <div className="text-gray-600 text-sm mb-1">
-            <Award size={14} className="inline mr-1" /> XR AI Hack İstanbul 2024 Winner
-          </div>
-          <div className="text-gray-600 text-sm mb-1">
-            <Award size={14} className="inline mr-1" /> Unity: 3D Level Design - LinkedIn (2020)
-          </div>
-          <div className="text-gray-600 text-sm">
-            <Award size={14} className="inline mr-1" /> Unity Scripting and Publishing - LinkedIn (2020)
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-lg font-semibold mb-3">Contact</h2>
-          <div className="flex flex-col gap-2">
-            <a href="mailto:yagizeraslan@gmail.com" className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2">
-              <Mail size={16} />
-              <span className="text-sm">yagizeraslan@gmail.com</span>
-            </a>
-            <a href="https://www.linkedin.com/in/yagizeraslan" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2">
-              <Linkedin size={16} />
-              <span className="text-sm">linkedin.com/in/yagizeraslan</span>
-            </a>
-            <div className="text-gray-700 flex items-center gap-2">
-              <Book size={16} />
-              <span className="text-sm">+90 536 957 2042</span>
+                  {/* Content area with consistent spacing */}
+                  <div className="p-4 flex flex-col flex-grow min-h-[200px]">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-lg font-semibold leading-tight line-clamp-2 flex-1 pr-2">
+                        {project.title}
+                      </h3>
+                      {(project.link || project.repoUrl) && (
+                        <a 
+                          href={project.link || project.repoUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-blue-600 hover:text-blue-800 transition-colors flex-shrink-0 p-1 hover:bg-blue-50 rounded"
+                        >
+                          <ExternalLink size={18} />
+                        </a>
+                      )}
+                    </div>
+                    
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {project.tags.slice(0, 4).map((tag) => (
+                        <span 
+                          key={tag} 
+                          className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {project.tags.length > 4 && (
+                        <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs font-medium">
+                          +{project.tags.length - 4}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Right Content Area */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Navigation */}
-        <div className="bg-white p-4 shadow-sm">
-          <div className="flex space-x-2 overflow-x-auto pb-2">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 whitespace-nowrap transition-colors ${
-                  activeCategory === category.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {category.icon}
-                {category.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Projects Grid with Fixed Card Sizes */}
-        <div className="flex-1 overflow-y-auto p-6 bg-gray-50">
-          <h2 className="text-2xl font-bold mb-6">{categories.find(c => c.id === activeCategory)?.name}</h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
-            {projects[activeCategory].map((project) => (
-              <div 
-                key={project.id} 
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col"
-                style={{
-                  width: '360px',
-                  height: '480px'
-                }}
-              >
-                {/* Image container with fixed 3:2 aspect ratio */}
-                <div className="w-full" style={{ height: '240px', overflow: 'hidden' }}>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = '/api/placeholder/480/320';
-                    }}
-                  />
-                </div>
-
-                {/* Content area with fixed height */}
-                <div className="p-4 flex flex-col flex-grow" style={{ height: '240px' }}>
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-semibold line-clamp-2">{project.title}</h3>
-                    {(project.link || project.repoUrl) && (
-                      <a 
-                        href={project.link || project.repoUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="text-blue-600 hover:text-blue-800 flex-shrink-0 ml-2"
-                      >
-                        <ExternalLink size={18} />
-                      </a>
-                    )}
-                  </div>
-                  <p className="text-gray-600 text-sm mb-3 line-clamp-3 flex-grow">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 overflow-y-auto">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 };
