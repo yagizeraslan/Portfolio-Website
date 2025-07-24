@@ -1,11 +1,34 @@
-import React, { useState } from 'react';
-import { Mail, Linkedin, ExternalLink, Code, Smartphone, Headset, Globe, Briefcase, Award, Book, Camera, Github, Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail, Linkedin, ExternalLink, Code, Smartphone, Headset, Globe, Briefcase, Award, Book, Camera, Github, Menu, X, Star, Zap, Rocket, ChevronDown, ChevronRight } from 'lucide-react';
 
-const PortfolioWebsite = () => {
+const ModernPortfolio = () => {
   const [activeCategory, setActiveCategory] = useState('XR');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [openSections, setOpenSections] = useState({
+    skills: false,
+    experience: false,
+    education: false,
+    achievements: false,
+    hardware: false,
+    contact: false,
+  });
+  const [openSkillCategories, setOpenSkillCategories] = useState({});
 
-  // Project data based on Yağız Eraslan's portfolio
+  // Mouse tracking for subtle parallax effects
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth) * 100,
+        y: (e.clientY / window.innerHeight) * 100,
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Project data (keeping all original data)
   const projects = {
     XR: [
       {
@@ -14,7 +37,8 @@ const PortfolioWebsite = () => {
         description: 'Mixed Reality historical exploration experience with interactive portals to different time periods and 3D puzzle mechanics',
         image: 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Project_Thumbnails/Gates_Of_Memory.webp',
         link: 'https://youtube.com/shorts/kAb0phNKmjU',
-        tags: ['Unity', 'C#', 'Meta SDK', 'Quest 3']
+        tags: ['Unity', 'C#', 'Meta SDK', 'Quest 3'],
+        featured: true
       },
       {
         id: 2,
@@ -22,7 +46,8 @@ const PortfolioWebsite = () => {
         description: 'A Mixed Reality music creation app where users create soundscapes by placing blocks in their environment that interact with a bouncing ball',
         image: 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Project_Thumbnails/Bounce_Beat.webp',
         link: 'https://youtu.be/pRoLIPdcv0U',
-        tags: ['Unity', 'C#', 'Meta SDK', 'URP', 'Quest 3']
+        tags: ['Unity', 'C#', 'Meta SDK', 'URP', 'Quest 3'],
+        featured: true
       }
     ],
     VR: [
@@ -180,11 +205,11 @@ const PortfolioWebsite = () => {
       },
       {
         id: 6,
-        title: 'Crash Game',
-        description: 'Real-time multiplayer betting game with WebSocket communication and mobile-friendly controls',
+        title: 'Real-time Strategy Simulation',
+        description: 'Multiplayer strategy game with dynamic resource management, WebSocket synchronization, and tactical decision-making mechanics',
         image: '/api/placeholder/480/320',
         link: 'https://crash-gamee.netlify.app/',
-        tags: ['Unity', 'C#', 'WebGL', 'WebSocket', 'Custom jslib']
+        tags: ['Unity', 'C#', 'WebGL', 'WebSocket', 'Javascript']
       }
     ],
     GitHub: [
@@ -276,26 +301,137 @@ const PortfolioWebsite = () => {
 
   // Category navigation items
   const categories = [
-    { id: 'XR', name: 'XR Projects', icon: <Headset size={18} /> },
-    { id: 'VR', name: 'VR Projects', icon: <Headset size={18} /> },
-    { id: 'Mobile', name: 'Mobile Projects', icon: <Smartphone size={18} /> },
-    { id: 'Web', name: 'Web Projects', icon: <Globe size={18} /> },
-    { id: 'GitHub', name: 'GitHub Projects', icon: <Github size={18} /> },
-    { id: 'Freelance', name: 'Freelance Services', icon: <Briefcase size={18} /> },
-    { id: 'Photography', name: 'Photography', icon: <Camera size={18} /> },
+    { id: 'XR', name: 'XR Projects', icon: <Headset size={18} />, gradient: 'from-purple-500 to-pink-500' },
+    { id: 'VR', name: 'VR Projects', icon: <Headset size={18} />, gradient: 'from-blue-500 to-cyan-500' },
+    { id: 'Mobile', name: 'Mobile Projects', icon: <Smartphone size={18} />, gradient: 'from-green-500 to-teal-500' },
+    { id: 'Web', name: 'Web Projects', icon: <Globe size={18} />, gradient: 'from-orange-500 to-red-500' },
+    { id: 'GitHub', name: 'GitHub Projects', icon: <Github size={18} />, gradient: 'from-gray-500 to-gray-700' },
+    { id: 'Freelance', name: 'Freelance Services', icon: <Briefcase size={18} />, gradient: 'from-yellow-500 to-orange-500' },
+    { id: 'Photography', name: 'Photography', icon: <Camera size={18} />, gradient: 'from-indigo-500 to-purple-500' },
+  ];
+
+  const skillCategories = [
+    {
+      category: "Programming Languages",
+      skills: ["C#", "JavaScript", "Python", "Java", "Visual Basic"]
+    },
+    {
+      category: "XR/VR/AR Development",
+      skills: [
+        "Unity 3D/2D", "Meta SDK", "Mixed Reality", "SteamVR SDK", 
+        "VR Interaction Framework (VRIF)", "ARCore/ARKit", "Hand Tracking", "Physics-based Interactions"
+      ]
+    },
+    {
+      category: "Web Development",
+      skills: [
+        "React.js", "Node.js", "Express.js", "HTML5", "CSS3", 
+        "WebGL", "REST APIs", "WebSocket", "HTTPS/SSL"
+      ]
+    },
+    {
+      category: "Game Development",
+      skills: [
+        "Unity Engine", "Cross-platform Development", "Performance Optimization", 
+        "Physics Systems", "Object Pooling", "Addressable Assets", "DOTween", "ProBuilder/ProGrids"
+      ]
+    },
+    {
+      category: "Mobile Development",
+      skills: [
+        "Android", "iOS", "Touch Controls", "Mobile UI/UX", "App Store Distribution"
+      ]
+    },
+    {
+      category: "AI & Machine Learning",
+      skills: [
+        "OpenAI API", "KlingAI API", "Google APIs", "Firebase", "Real-time AI Processing"
+      ]
+    },
+    {
+      category: "Database & Backend",
+      skills: [
+        "Firebase", "Google Firebase", "PlayerPrefs", "Scriptable Objects", "JWT Authentication"
+      ]
+    },
+    {
+      category: "Analytics & Monetization",
+      skills: [
+        "Google AdMob", "Amplitude Analytics", "Firebase Analytics", "User Data Collection", "A/B Testing"
+      ]
+    },
+    {
+      category: "Development Tools",
+      skills: [
+        "Git", "Unity Addressables", "Newtonsoft.Json", "Command Pattern", "Localization", "Custom jslib Plugins"
+      ]
+    },
+    {
+      category: "Project Management",
+      skills: [
+        "Team Leadership", "Agile Methodology", "Technical Documentation", "Cross-disciplinary Collaboration", "Academic Partnerships"
+      ]
+    },
+    {
+      category: "Educational Technology",
+      skills: [
+        "Curriculum Development", "Online Instruction", "Progress Tracking", "Project-based Learning", "Mentoring"
+      ]
+    },
+    {
+      category: "Industry Experience",
+      skills: [
+        "Medical Training", "Industrial Training", "Enterprise Solutions", "Commercial Gaming", "Educational Applications"
+      ]
+    }
   ];
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const toggleSection = (section) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
+  const toggleSkillCategory = (category) => {
+    setOpenSkillCategories((prev) => ({
+      ...prev,
+      [category]: !prev[category],
+    }));
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent)]"></div>
+        <div 
+          className="absolute w-96 h-96 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl transition-transform duration-1000"
+          style={{
+            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+            left: '10%',
+            top: '20%',
+          }}
+        ></div>
+        <div 
+          className="absolute w-96 h-96 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-3xl transition-transform duration-1000"
+          style={{
+            transform: `translate(-${mousePosition.x * 0.02}px, -${mousePosition.y * 0.02}px)`,
+            right: '10%',
+            bottom: '20%',
+          }}
+        ></div>
+      </div>
+
       {/* Mobile Menu Button */}
-      <div className="lg:hidden fixed top-4 left-4 z-50">
+      <div className="lg:hidden fixed top-6 left-6 z-50">
         <button
           onClick={toggleSidebar}
-          className="bg-white p-2 rounded-md shadow-md hover:bg-gray-50 transition-colors"
+          className="bg-white/10 backdrop-blur-lg p-3 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 shadow-lg"
         >
           {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -305,7 +441,7 @@ const PortfolioWebsite = () => {
         {/* Sidebar Overlay for Mobile */}
         {isSidebarOpen && (
           <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
             onClick={() => setIsSidebarOpen(false)}
           />
         )}
@@ -313,136 +449,281 @@ const PortfolioWebsite = () => {
         {/* Left Sidebar */}
         <div className={`
           fixed lg:relative lg:translate-x-0 lg:block
-          w-80 bg-white shadow-md z-40 h-full lg:h-auto
-          transform transition-transform duration-300 ease-in-out
+          w-80 h-full lg:h-auto z-40
+          transform transition-all duration-500 ease-out
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-          overflow-y-auto
+          overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20
         `}>
-          <div className="p-6">
-            <div className="flex flex-col items-center mb-8">
-              <div className="w-32 h-32 rounded-full bg-gray-200 mb-4 overflow-hidden">
-                <img 
-                  src="https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Portfolio-1.jpg" 
-                  alt="Yağız Eraslan" 
-                  className="w-full h-full object-cover" 
-                />
+          <div className="bg-white/8 backdrop-blur-xl border-r border-white/20 h-full">
+            <div className="p-8">
+              {/* Profile Section */}
+              <div className="text-center mb-10">
+                <div className="relative inline-block mb-6">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 p-1">
+                    <div className="w-full h-full rounded-full bg-slate-900 p-1">
+                      <img 
+                        src="https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Portfolio-1.jpg" 
+                        alt="Yağız Eraslan" 
+                        className="w-full h-full object-cover rounded-full" 
+                      />
+                    </div>
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                    <Zap size={14} className="text-white" />
+                  </div>
+                </div>
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
+                  Yağız Eraslan
+                </h1>
+                <p className="text-gray-300 text-sm mb-4">Unity Developer | XR | Mobile | Web</p>
+                <div className="flex justify-center gap-2">
+                  <div className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-xs flex items-center gap-1">
+                    <Star size={12} className="text-yellow-400" />
+                    7+ Years
+                  </div>
+                  <div className="px-3 py-1 bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-full text-xs">
+                    Available
+                  </div>
+                </div>
               </div>
-              <h1 className="text-2xl font-bold">Yağız Eraslan</h1>
-              <p className="text-gray-600 text-center mt-1">Unity Developer | XR | Mobile | Web</p>
-            </div>
 
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-3">About Me</h2>
-              <p className="text-gray-600 text-sm">
-                Skilled Unity Developer with 7+ years of experience in Mobile and VR/AR development.
-                Proven ability to create and implement game functionality, optimize performance,
-                and deliver high-quality applications for platforms including Meta Store, Play Store and Steam.
-              </p>
-            </div>
+              {/* About Section */}
+              <div className="mb-8">
+                <h2 className="text-xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                  About Me
+                </h2>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Skilled Unity Developer with 7+ years of experience in Mobile and VR/AR development.
+                  Proven ability to create and implement game functionality, optimize performance,
+                  and deliver high-quality applications for platforms including Meta Store, Play Store and Steam.
+                </p>
+              </div>
 
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-3">Skills</h2>
-              <div className="flex flex-wrap gap-2">
-                {['Unity', 'C#', 'XR Development', 'VR/AR/MR', 'Mobile Development', 'WebGL', 'React.js', 'Node.js', 'AI Integration', 'Addressables', 'Photon Fusion', 'SteamVR', 'Meta SDK', 'Firebase', 'Git', 'Performance Optimization', 'Training Simulations', 'B2B Solutions'].map((skill) => (
-                  <span key={skill} className="bg-gray-200 px-2 py-1 rounded-md text-xs">
-                    {skill}
+              {/* Skills Section */}
+              <div className="mb-4">
+                <button
+                  className="flex items-center w-full text-left gap-2 text-xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent focus:outline-none"
+                  onClick={() => toggleSection('skills')}
+                  aria-expanded={openSections.skills}
+                >
+                  <span className="mr-1">
+                    {openSections.skills ? '▼' : '▶'}
                   </span>
-                ))}
+                  {openSections.skills ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+                  Skills
+                </button>
+                {openSections.skills && (
+                  <div className="space-y-6">
+                    {skillCategories.map((cat) => (
+                      <div key={cat.category}>
+                        <button
+                          className="flex items-center w-full text-left gap-2 text-base font-semibold mb-2 text-cyan-300 focus:outline-none"
+                          onClick={() => toggleSkillCategory(cat.category)}
+                          aria-expanded={!!openSkillCategories[cat.category]}
+                        >
+                          <span className="mr-1">
+                            {openSkillCategories[cat.category] ? '▼' : '▶'}
+                          </span>
+                          {cat.category}
+                        </button>
+                        {openSkillCategories[cat.category] && (
+                          <div className="flex flex-wrap gap-2 pl-6">
+                            {cat.skills.map((skill) => (
+                              <span
+                                key={skill}
+                                className="bg-white/10 border border-white/20 px-3 py-1 rounded-lg text-xs font-medium hover:bg-white/20 transition-all duration-300 cursor-default backdrop-blur-sm"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
 
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-3">Experience</h2>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Freelance Software Developer</p>
-                  <p className="text-gray-600 text-sm">UpWork, 2024-Present</p>
-                </div>
-                <div>
-                  <p className="font-medium">Unity Team Leader</p>
-                  <p className="text-gray-600 text-sm">Global Future Designs and Solutions Inc., 2023-2024</p>
-                </div>
-                <div>
-                  <p className="font-medium">Unity Developer</p>
-                  <p className="text-gray-600 text-sm">Global Future Designs and Solutions Inc., 2021-2023</p>
-                </div>
-                <div>
-                  <p className="font-medium">Coding Instructor</p>
-                  <p className="text-gray-600 text-sm">PRONOVA Digital Imaging Technologies, 2019-2020</p>
-                </div>
-                <div>
-                  <p className="font-medium">STEM Instructor</p>
-                  <p className="text-gray-600 text-sm">PRONOVA Digital Imaging Technologies, 2017-2019</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-3">Education</h2>
-              <div>
-                <p className="font-medium">Bachelor of Sciences, Astronomy and Space Sciences</p>
-                <p className="text-gray-600 text-sm">Ankara University, Science Faculty, 2012-2016</p>
-              </div>
-            </div>
-
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-3">Hardware</h2>
-              <p className="text-gray-600 text-sm">
-                Development experience with Meta Quest 2/3, Pico 4, HTC Vive Pro, and HTC Vive Cosmos headsets
-              </p>
-            </div>
-
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold mb-3">Certifications</h2>
-              <div className="space-y-1">
-                <div className="text-gray-600 text-sm flex items-start gap-2">
-                  <Award size={14} className="mt-0.5 flex-shrink-0" /> 
-                  <span>XR AI Hack İstanbul 2024 Winner</span>
-                </div>
-                <div className="text-gray-600 text-sm flex items-start gap-2">
-                  <Award size={14} className="mt-0.5 flex-shrink-0" /> 
-                  <span>Unity: 3D Level Design - LinkedIn (2020)</span>
-                </div>
-                <div className="text-gray-600 text-sm flex items-start gap-2">
-                  <Award size={14} className="mt-0.5 flex-shrink-0" /> 
-                  <span>Unity Scripting and Publishing - LinkedIn (2020)</span>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-lg font-semibold mb-3">Contact</h2>
-              <div className="flex flex-col gap-3">
-                <a 
-                  href="mailto:yagizeraslan@gmail.com" 
-                  className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"
+              {/* Experience Section */}
+              <div className="mb-4">
+                <button
+                  className="flex items-center w-full text-left gap-2 text-xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent focus:outline-none"
+                  onClick={() => toggleSection('experience')}
+                  aria-expanded={openSections.experience}
                 >
-                  <Mail size={16} className="flex-shrink-0" />
-                  <span className="text-sm break-all">yagizeraslan@gmail.com</span>
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/yagizeraslan" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"
+                  <span className="mr-1">
+                    {openSections.experience ? '▼' : '▶'}
+                  </span>
+                  {openSections.experience ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+                  Experience
+                </button>
+                {openSections.experience && (
+                  <div className="space-y-4">
+                    {[
+                      { role: "VR Specialist - DCU Supplier", company: "Dublin City University", period: "2025, Jul - Present", current: true },
+                      { role: "Freelance Software Developer", company: "UpWork", period: "2024, Jun - Present", current: true },
+                      { role: "Community Mentor", company: "XR Bootcamp", period: "2024, Oct - 2024, Dec" },
+                      { role: "Unity Developer", company: "IRONHEAD Games", period: "2024, Aug - 2024, Sep" },
+                      { role: "Unity VR Team Leader", company: "Global Future Designs and Solutions Inc.", period: "2023 Sep, - 2024, Jul" },
+                      { role: "Unity Developer", company: "Global Future Designs and Solutions Inc.", period: "2021, Feb - 2023, Sep" },
+                      { role: "Coding Instructor", company: "PRONOVA Digital Imaging Technologies", period: "2019, Jun - 2020, Mar" },
+                      { role: "STEM Instructor", company: "PRONOVA Digital Imaging Technologies", period: "2017, Apr - 2019, Dec" },
+                    ].map((exp, index) => (
+                      <div key={index} className={`p-3 rounded-lg border ${exp.current ? 'bg-gradient-to-r from-green-500/10 to-blue-500/10 border-green-500/30' : 'bg-white/5 border-white/10'} backdrop-blur-sm`}>
+                        <p className="font-semibold text-sm">{exp.role}</p>
+                        <p className="text-gray-300 text-xs">{exp.company}</p>
+                        <p className="text-gray-400 text-xs">{exp.period}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Education Section */}
+              <div className="mb-4">
+                <button
+                  className="flex items-center w-full text-left gap-2 text-xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent focus:outline-none"
+                  onClick={() => toggleSection('education')}
+                  aria-expanded={openSections.education}
                 >
-                  <Linkedin size={16} className="flex-shrink-0" />
-                  <span className="text-sm break-all">linkedin.com/in/yagizeraslan</span>
-                </a>
-                <div className="text-gray-700 flex items-center gap-2">
-                  <Book size={16} className="flex-shrink-0" />
-                  <span className="text-sm">+90 536 957 2042</span>
-                </div>
+                  <span className="mr-1">
+                    {openSections.education ? '▼' : '▶'}
+                  </span>
+                  {openSections.education ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+                  Education
+                </button>
+                {openSections.education && (
+                  <div className="p-3 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <p className="font-semibold text-sm">Bachelor of Sciences</p>
+                    <p className="text-gray-300 text-xs">Astronomy and Space Sciences</p>
+                    <p className="text-gray-400 text-xs">Ankara University, 2012-2016</p>
+                  </div>
+                )}
+              </div>
+
+              {/* Achievements Section */}
+              <div className="mb-4">
+                <button
+                  className="flex items-center w-full text-left gap-2 text-xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent focus:outline-none"
+                  onClick={() => toggleSection('achievements')}
+                  aria-expanded={openSections.achievements}
+                >
+                  <span className="mr-1">
+                    {openSections.achievements ? '▼' : '▶'}
+                  </span>
+                  {openSections.achievements ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+                  Achievements
+                </button>
+                {openSections.achievements && (
+                  <div className="space-y-2">
+                    {[
+                      "XR AI Hack İstanbul 2024 Winner",
+                      "Unity: 3D Level Design - LinkedIn (2020)",
+                      "Unity Scripting and Publishing - LinkedIn (2020)"
+                    ].map((cert, index) => (
+                      <div key={index} className="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                        <Award size={16} className="text-yellow-400 flex-shrink-0" />
+                        <span className="text-xs text-gray-300">{cert}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Hardware Section */}
+              <div className="mb-4">
+                <button
+                  className="flex items-center w-full text-left gap-2 text-xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent focus:outline-none"
+                  onClick={() => toggleSection('hardware')}
+                  aria-expanded={openSections.hardware}
+                >
+                  <span className="mr-1">
+                    {openSections.hardware ? '▼' : '▶'}
+                  </span>
+                  {openSections.hardware ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+                  Hardware
+                </button>
+                {openSections.hardware && (
+                  <div className="space-y-2">
+                    {[
+                      "Meta Quest 3 & 3S",
+                      "Meta Quest 2 & Pro",
+                      "Pico 4",
+                      "HTC Vive Pro",
+                      "HTC Vive Cosmos"
+                    ].map((hardware, index) => (
+                      <div key={index} className="flex items-center gap-3 text-xs text-gray-300">
+                        <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full flex-shrink-0"></div>
+                        <span>{hardware}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Contact Section */}
+              <div className="mb-4">
+                <button
+                  className="flex items-center w-full text-left gap-2 text-xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent focus:outline-none"
+                  onClick={() => toggleSection('contact')}
+                  aria-expanded={openSections.contact}
+                >
+                  <span className="mr-1">
+                    {openSections.contact ? '▼' : '▶'}
+                  </span>
+                  {openSections.contact ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
+                  Contact
+                </button>
+                {openSections.contact && (
+                  <div className="space-y-3">
+                    <a 
+                      href="mailto:yagizeraslan@gmail.com" 
+                      className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm group"
+                    >
+                      <Mail size={16} className="text-cyan-400" />
+                      <span className="text-xs text-gray-300 group-hover:text-white transition-colors">yagizeraslan@gmail.com</span>
+                    </a>
+                    <a 
+                      href="https://www.linkedin.com/in/yagizeraslan" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm group"
+                    >
+                      <Linkedin size={16} className="text-blue-400" />
+                      <span className="text-xs text-gray-300 group-hover:text-white transition-colors">linkedin.com/in/yagizeraslan</span>
+                    </a>
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                      <Book size={16} className="text-green-400" />
+                      <span className="text-xs text-gray-300">+90 536 957 2042</span>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
 
         {/* Right Content Area */}
-        <div className="flex-1 flex flex-col lg:ml-0 ml-0">
+        <div className="flex-1 flex flex-col lg:ml-0 ml-0 relative">
+          {/* Hero Section */}
+          <div className="bg-gradient-to-br from-purple-900/30 via-blue-900/20 to-transparent backdrop-blur-sm border-b border-white/20 p-8 mt-20 lg:mt-0">
+            <div className="max-w-4xl">
+              <div className="flex items-center gap-3 mb-4">
+                <Rocket className="text-cyan-400" size={32} />
+                <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-white via-cyan-200 to-purple-200 bg-clip-text text-transparent">
+                  Digital Experiences
+                </h1>
+              </div>
+              <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
+                Crafting immersive XR worlds, mobile experiences, and cutting-edge web applications 
+                that push the boundaries of interactive technology.
+              </p>
+            </div>
+          </div>
+
           {/* Navigation */}
-          <div className="bg-white p-4 shadow-sm mt-16 lg:mt-0">
-            <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="bg-white/5 backdrop-blur-xl border-b border-white/10 p-6 sticky top-0 z-30">
+            <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/20">
               {categories.map((category) => (
                 <button
                   key={category.id}
@@ -450,83 +731,110 @@ const PortfolioWebsite = () => {
                     setActiveCategory(category.id);
                     setIsSidebarOpen(false);
                   }}
-                  className={`px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 whitespace-nowrap transition-colors flex-shrink-0 ${
+                  className={`group relative px-6 py-3 rounded-xl text-sm font-semibold flex items-center gap-3 whitespace-nowrap transition-all duration-300 flex-shrink-0 ${
                     activeCategory === category.id
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-gradient-to-r ' + category.gradient + ' text-white shadow-lg scale-105'
+                      : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white border border-white/20'
                   }`}
                 >
-                  {category.icon}
+                  <div className={`p-1 rounded-lg ${activeCategory === category.id ? 'bg-white/20' : 'bg-white/10'}`}>
+                    {category.icon}
+                  </div>
                   <span className="hidden sm:inline">{category.name}</span>
                   <span className="sm:hidden">{category.name.split(' ')[0]}</span>
+                  {activeCategory === category.id && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-xl animate-pulse"></div>
+                  )}
                 </button>
               ))}
             </div>
           </div>
 
           {/* Projects Grid */}
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-gray-50">
-            <h2 className="text-2xl font-bold mb-6 text-center lg:text-left">
-              {categories.find(c => c.id === activeCategory)?.name}
-            </h2>
+          <div className="flex-1 p-6 lg:p-8">
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
+                {categories.find(c => c.id === activeCategory)?.name}
+              </h2>
+              <p className="text-gray-400">
+                {projects[activeCategory].length} {projects[activeCategory].length === 1 ? 'project' : 'projects'} showcasing expertise in {activeCategory.toLowerCase()} development
+              </p>
+            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 justify-items-center max-w-none">
-              {projects[activeCategory].map((project) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
+              {projects[activeCategory].map((project, index) => (
                 <div 
                   key={project.id} 
-                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 flex flex-col w-full max-w-sm"
+                  className="group relative bg-white/5 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/20 hover:border-cyan-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-400/40"
+                  style={{
+                    animationDelay: `${index * 100}ms`,
+                    animation: 'fadeInUp 0.6s ease-out forwards',
+                  }}
                 >
-                  {/* Image container with consistent aspect ratio */}
-                  <div className="w-full aspect-[3/2] overflow-hidden bg-gray-100">
+                  {/* Featured Badge */}
+                  {project.featured && (
+                    <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                      <Star size={12} />
+                      Featured
+                    </div>
+                  )}
+
+                  {/* Image Container */}
+                  <div className="relative w-full aspect-[16/10] overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-200 hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = '/api/placeholder/480/320';
                       }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    {/* Link Button */}
+                    {project.link && (
+                      <a 
+                        href={project.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="absolute top-4 right-4 bg-white/20 backdrop-blur-lg p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/30 hover:scale-110"
+                      >
+                        <ExternalLink size={16} className="text-white" />
+                      </a>
+                    )}
                   </div>
 
-                  {/* Content area with consistent spacing */}
-                  <div className="p-4 flex flex-col flex-grow min-h-[200px]">
-                    <div className="flex justify-between items-start mb-3">
-                      <h3 className="text-lg font-semibold leading-tight line-clamp-2 flex-1 pr-2">
-                        {project.title}
-                      </h3>
-                      {(project.link || project.repoUrl) && (
-                        <a 
-                          href={project.link || project.repoUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="text-blue-600 hover:text-blue-800 transition-colors flex-shrink-0 p-1 hover:bg-blue-50 rounded"
-                        >
-                          <ExternalLink size={18} />
-                        </a>
-                      )}
-                    </div>
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-white mb-3 line-clamp-2 group-hover:text-cyan-300 transition-colors duration-300">
+                      {project.title}
+                    </h3>
                     
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
+                    <p className="text-gray-300 text-sm mb-4 line-clamp-3 leading-relaxed">
                       {project.description}
                     </p>
                     
-                    <div className="flex flex-wrap gap-2 mt-auto">
+                    <div className="flex flex-wrap gap-2">
                       {project.tags.slice(0, 4).map((tag) => (
                         <span 
                           key={tag} 
-                          className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs font-medium"
+                          className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 text-purple-200 px-3 py-1 rounded-lg text-xs font-medium backdrop-blur-sm"
                         >
                           {tag}
                         </span>
                       ))}
                       {project.tags.length > 4 && (
-                        <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs font-medium">
+                        <span className="bg-white/10 border border-white/20 text-gray-300 px-3 py-1 rounded-lg text-xs font-medium">
                           +{project.tags.length - 4}
                         </span>
                       )}
                     </div>
                   </div>
+
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"></div>
+                  <div className="absolute inset-0 shadow-[0_0_50px_rgba(34,211,238,0.4)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"></div>
                 </div>
               ))}
             </div>
@@ -535,19 +843,42 @@ const PortfolioWebsite = () => {
       </div>
 
       <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
+        
+        .scrollbar-thin::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
         }
+        
+        .scrollbar-track-transparent::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        
+        .scrollbar-thumb-white\\/20::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 2px;
+        }
+        
+        .scrollbar-thumb-white\\/20::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+        
         .line-clamp-2 {
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
+        
         .line-clamp-3 {
           display: -webkit-box;
           -webkit-line-clamp: 3;
@@ -559,4 +890,4 @@ const PortfolioWebsite = () => {
   );
 };
 
-export default PortfolioWebsite;
+export default ModernPortfolio;
