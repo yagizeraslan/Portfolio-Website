@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Linkedin, ExternalLink, Code, Smartphone, Headset, Globe, Briefcase, Award, Book, Camera, Github, Menu, X, Star, Zap, Rocket, ChevronDown, ChevronRight } from 'lucide-react';
+import { Mail, Linkedin, ExternalLink, Code, Smartphone, Headset, Globe, Briefcase, Award, Book, Camera, Github, Menu, X, Star, Zap, Rocket, ChevronDown, ChevronRight, TelescopeIcon } from 'lucide-react';
 
 const ModernPortfolio = () => {
   const [activeCategory, setActiveCategory] = useState('XR');
@@ -267,6 +267,176 @@ const ModernPortfolio = () => {
         tags: ['Game Analysis', 'Mechanics Documentation', 'Technical Requirements', 'Feature Planning']
       }
     ],
+    Astronomy: [
+      {
+        id: 1,
+        title: 'Titan ın Kum Tepeleri',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2015/11/PIA20016-SaturnMoon-Titan-20151113.jpg',
+        link: 'https://www.uzaydanhaberler.com/2015/11/04/titanin-kum-tepeleri/',
+      },
+      {
+        id: 2,
+        title: 'Tayland Semasını Aydınlatan Meteor',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2015/11/tayland-meteor-1.jpg',
+        link: 'https://www.uzaydanhaberler.com/2015/11/04/tayland-semasini-aydinlatan-meteor/',
+      },
+      {
+        id: 3,
+        title: 'Mars, Bir Zamanlar Dünya Gibi Miydi?',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2015/11/mars-1.jpg',
+        link: 'https://www.uzaydanhaberler.com/2015/11/05/mars-bir-zamanlar-dunya-gibi-miydi/',
+      },
+      {
+        id: 4,
+        title: 'NASA, Mars Atmosferinin Seyrekliğini Açıkladı',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2015/11/sun-winds-hits-mars-1.jpg',
+        link: 'https://www.uzaydanhaberler.com/2015/11/07/nasa-mars-atmosferinin-seyrekligini-acikladi/',
+      },
+      {
+        id: 5,
+        title: 'Güneş Sistemindeki En Uzak Gök Cismi Keşfedildi',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2015/11/dwarf-planet-eris-artist-impression-1.jpg',
+        link: 'https://www.uzaydanhaberler.com/2015/11/12/gunes-sistemindeki-en-uzak-gok-cismi-kesfedildi/',
+      },
+      {
+        id: 6,
+        title: 'Titan ın Kum Tepeleri',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2015/12/2218.jpg',
+        link: 'https://www.uzaydanhaberler.com/2015/12/04/gezegen-sistem-modeli-4-simulasyonu-kepler-orrery-iv/',
+      },
+      {
+        id: 7,
+        title: 'Yeni Ufuklar, Plüto’nun En Yüksek Çözünürlükteki Görüntülerini Yolladı',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2015/12/nh-plutosbadlands_0-1-1024x924-1.jpg',
+        link: 'https://www.uzaydanhaberler.com/2015/12/05/new-horizons-plutonun-en-yuksek-cozunurlukteki-goruntulerini-yolladi/',
+      },
+      {
+        id: 8,
+        title: 'Kütleçekim Kuvveti İle Patlayan Bir Yıldızı Gözlemek',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2015/12/kuetlecekim-etkisinin-goesterimi.jpg',
+        link: 'https://www.uzaydanhaberler.com/2015/12/20/kutlecekim-kuvveti-ile-supernova-gozlemek/',
+      },
+      {
+        id: 9,
+        title: 'Voyager Uyduları',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/01/Voyager_spacecraft-e1470990071668.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/01/24/voyager-uydulari/',
+      },
+      {
+        id: 10,
+        title: 'Auroralar Nasıl Oluşur?',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/01/norvec-ten-aurora-manzarasi.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/01/26/auroralar-nasil-olusur-15-saniyede-bilim/',
+      },
+      {
+        id: 11,
+        title: 'Çıplak Gözle Fotoğraflardaki Kadar Çok Yıldız Görebilir Miyiz?',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/01/IMG_8849-1-1024x683-1.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/01/26/ciplak-gozle-fotograflardaki-kadar-cok-yildiz-gorebilir-miyiz/',
+      },
+      {
+        id: 12,
+        title: '90 Günlük Ömür Biçilen Opportunity Aracı Mars’daki 12. Yılını Kutladı',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/01/opportunity-maraton-vadisi-nde-kayaclari-kaziyor-nasa.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/01/27/90-gunluk-omur-bicilen-opportunity-araci-marsdaki-12-yilini-kutladi/',
+      },
+      {
+        id: 13,
+        title: 'Challenger Faciası – 28 Ocak 1986',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/01/AP8601281739.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/01/28/challenger-uzay-mekigi-faciasi-28-ocak-1986/',
+      },
+      {
+        id: 14,
+        title: 'Uzay Fotoğraflarında Yıldızları Neden Göremiyoruz?',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/02/maxresdefault-5-1.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/02/09/uzay-fotograflarinda-yildizlari-neden-goremiyoruz/',
+      },
+      {
+        id: 15,
+        title: 'Curiosity Nasıl Selfie Çekiyor?',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/02/nasa-curiosity-rover-self-portrait-1.png',
+        link: 'https://www.uzaydanhaberler.com/2016/02/14/curiosity-nasil-selfie-cekiyor/',
+      },
+      {
+        id: 16,
+        title: 'Yerçekimsiz Ortamda Kuruyemiş Konservesi Açılırsa Ne Olur?',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/02/kapak_görseli-1.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/02/13/yercekimsiz-ortamda-kuruyemis-konservesi-acilirsa-ne-olur/',
+      },
+      {
+        id: 17,
+        title: 'Uzayla İlgili Söylenmiş 10 Yalan Bilgi',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/10/Asteroit-Kemeri.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/10/08/uzayla-ilgili-soylenmis-10-yalan-bilgi/',
+      },
+      {
+        id: 18,
+        title: 'Ne Kadar Büyük Bir Meteor İnsanlığın Sonunu Getirir?',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/11/aua-meteorite.jpg',
+        link: 'https://www.uzaydanhaberler.com/wp-content/uploads/2016/11/aua-meteorite.jpg',
+      },
+      {
+        id: 19,
+        title: 'Hubble Gözlenebilir 2 Trilyon Galaksi Keşfetti',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/10/p1639ay-goodss-160930.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/10/13/hubble-gozlenebilir-2-trilyon-galaksi-kesfetti/',
+      },
+      {
+        id: 20,
+        title: 'Mars’taki Uçan Kaşık Sadece Tuhaf Bir Kaya',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2016/12/2-floating-spoon-on-mars.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/12/27/marstaki-ucan-kasik-sadece-tuhaf-bir-kaya/',
+      },
+      {
+        id: 21,
+        title: '21 Haziran 2020 Halkalı Güneş Tutulması',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2020/06/1280px-Annular_solar_eclipse_2012.jpg',
+        link: 'https://www.uzaydanhaberler.com/2020/06/20/21-haziran-2020-halkali-gunes-tutulmasi/',
+      },
+      {
+        id: 22,
+        title: 'Rosetta’nın Animasyon Videoları',
+        image: 'https://api.allorigins.win/raw?url=https://img.youtube.com/vi/hV-e7CIrO5k/maxresdefault.jpg',
+        link: 'https://www.uzaydanhaberler.com/2016/09/30/rosettanin-animasyon-videolari-turkce-altyazili/',
+      },
+      {
+        id: 23,
+        title: 'Karanlık Enerji Nedir ve Neden Evren Hızlanarak Genişliyor?',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2017/04/Astronomers-Use-Quasar-Light-to-Trace-the-Expansion-of-the-Universe.jpg',
+        link: 'https://www.uzaydanhaberler.com/2017/04/28/karanlik-enerji-nedir-ve-neden-evren-hizlanarak-genisliyor/',
+      },
+      {
+        id: 24,
+        title: 'Karanlık Madde Nedir?',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2017/04/nasa-nature-dark-matter-1cbc8438-1068x1031.gif',
+        link: 'https://www.uzaydanhaberler.com/2017/04/28/karanlik-madde-nedir/',
+      },
+      {
+        id: 25,
+        title: 'Dev, Aşırı Sıcak Yabancı Gezegen WASP-12b Asfalttan Daha Siyah',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2017/09/13-1.jpg',
+        link: 'https://www.uzaydanhaberler.com/2017/09/20/dev-asiri-sicak-yabanci-gezegen-wasp-12b-asfalttan-daha-siyah/',
+      },
+      {
+        id: 26,
+        title: 'Samanyolu’nun İçinden Gizemli Radyo Sinyalleri Tespit Edildi',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2020/11/C1-SGR_1935_burst_illustration-16.jpg',
+        link: 'https://www.uzaydanhaberler.com/2020/11/06/samanyolunun-icinden-gizemli-radyo-sinyalleri-tespit-edildi/',
+      },
+      {
+        id: 27,
+        title: 'Kara Delik, Yakınındaki Yıldızı Spagettiye Çevirip Yok Etti',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2020/10/wTrk66aE3QqYnRo6mAoqpS-scaled.jpg',
+        link: 'https://www.uzaydanhaberler.com/2020/10/15/kara-delik-yakinindaki-yildizi-spagettiye-cevirip-yok-etti/',
+      },
+      {
+        id: 28,
+        title: '21 Aralık 2020 | Jüpiter ve Satürn’ün Büyük Buluşması',
+        image: 'https://api.allorigins.win/raw?url=https://www.uzaydanhaberler.com/wp-content/uploads/2020/12/Saturn-Jupiter-Bulusmasi-cover.jpg',
+        link: 'https://www.uzaydanhaberler.com/2020/12/20/21-aralik-2020-jupiter-ve-saturnun-buyuk-bulusmasi/',
+      },
+    ],
     Photography: [
       {
         id: 1,
@@ -301,12 +471,13 @@ const ModernPortfolio = () => {
 
   // Category navigation items
   const categories = [
-    { id: 'XR', name: 'XR Projects', icon: <Headset size={18} />, gradient: 'from-purple-500 to-pink-500' },
-    { id: 'VR', name: 'VR Projects', icon: <Headset size={18} />, gradient: 'from-blue-500 to-cyan-500' },
-    { id: 'Mobile', name: 'Mobile Projects', icon: <Smartphone size={18} />, gradient: 'from-green-500 to-teal-500' },
-    { id: 'Web', name: 'Web Projects', icon: <Globe size={18} />, gradient: 'from-orange-500 to-red-500' },
-    { id: 'GitHub', name: 'GitHub Projects', icon: <Github size={18} />, gradient: 'from-gray-500 to-gray-700' },
-    { id: 'Freelance', name: 'Freelance Services', icon: <Briefcase size={18} />, gradient: 'from-yellow-500 to-orange-500' },
+    { id: 'XR', name: 'XR', icon: <Headset size={18} />, gradient: 'from-purple-500 to-pink-500' },
+    { id: 'VR', name: 'VR', icon: <Headset size={18} />, gradient: 'from-blue-500 to-cyan-500' },
+    { id: 'Mobile', name: 'Mobile', icon: <Smartphone size={18} />, gradient: 'from-green-500 to-teal-500' },
+    { id: 'Web', name: 'Web', icon: <Globe size={18} />, gradient: 'from-orange-500 to-red-500' },
+    { id: 'GitHub', name: 'GitHub', icon: <Github size={18} />, gradient: 'from-gray-500 to-gray-700' },
+    { id: 'Freelance', name: 'Freelance', icon: <Briefcase size={18} />, gradient: 'from-yellow-500 to-orange-500' },
+    { id: 'Astronomy', name: 'Astronomy', icon: <TelescopeIcon size={18} />, gradient: 'from-white-500 to-black-500' },
     { id: 'Photography', name: 'Photography', icon: <Camera size={18} />, gradient: 'from-indigo-500 to-purple-500' },
   ];
 
@@ -475,7 +646,7 @@ const ModernPortfolio = () => {
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
                   Yağız Eraslan
                 </h1>
-                <p className="text-gray-300 text-sm mb-4">Unity Developer | XR | Mobile | Web</p>
+                <p className="text-gray-300 text-sm mb-4">Unity Developer | XR | Mobile | Web | Astronomer</p>
                 <div className="flex justify-center gap-2">
                   <div className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-xs flex items-center gap-1">
                     <Star size={12} className="text-yellow-400" />
@@ -560,14 +731,16 @@ const ModernPortfolio = () => {
                 {openSections.experience && (
                   <div className="space-y-4">
                     {[
-                      { role: "VR Specialist - DCU Supplier", company: "Dublin City University", period: "2025, Jul - Present", current: true },
+                      { role: "Virtual Reality Specialist - DCU Supplier", company: "Dublin City University", period: "2025, Jul - Present", current: true },
                       { role: "Freelance Software Developer", company: "UpWork", period: "2024, Jun - Present", current: true },
                       { role: "Community Mentor", company: "XR Bootcamp", period: "2024, Oct - 2024, Dec" },
                       { role: "Unity Developer", company: "IRONHEAD Games", period: "2024, Aug - 2024, Sep" },
-                      { role: "Unity VR Team Leader", company: "Global Future Designs and Solutions Inc.", period: "2023 Sep, - 2024, Jul" },
-                      { role: "Unity Developer", company: "Global Future Designs and Solutions Inc.", period: "2021, Feb - 2023, Sep" },
+                      { role: "Virtual Reality Team Leader", company: "Global Future Designs and Solutions Inc.", period: "2023 Sep, - 2024, Jul" },
+                      { role: "Virtual Reality Developer", company: "Global Future Designs and Solutions Inc.", period: "2021, Feb - 2023, Sep" },
                       { role: "Coding Instructor", company: "PRONOVA Digital Imaging Technologies", period: "2019, Jun - 2020, Mar" },
                       { role: "STEM Instructor", company: "PRONOVA Digital Imaging Technologies", period: "2017, Apr - 2019, Dec" },
+                      { role: "Astronomical Observer", company: "Ankara University Kreiken Observatory", period: "2014, Feb - 2016, Oct" },
+                      { role: "Web Editor", company: "Ankara University Kreiken Observatory", period: "2015, Mar - 2016, Jul" },
                     ].map((exp, index) => (
                       <div key={index} className={`p-3 rounded-lg border ${exp.current ? 'bg-gradient-to-r from-green-500/10 to-blue-500/10 border-green-500/30' : 'bg-white/5 border-white/10'} backdrop-blur-sm`}>
                         <p className="font-semibold text-sm">{exp.role}</p>
@@ -617,9 +790,8 @@ const ModernPortfolio = () => {
                 {openSections.achievements && (
                   <div className="space-y-2">
                     {[
-                      "XR AI Hack İstanbul 2024 Winner",
-                      "Unity: 3D Level Design - LinkedIn (2020)",
-                      "Unity Scripting and Publishing - LinkedIn (2020)"
+                      "XR AI Hack Istanbul 2024 - 1st Place Winner (Meta-sponsored)",
+                      "XR Akademi Hackathon 2024 - 3rd Place Winner (Meta-funded)"
                     ].map((cert, index) => (
                       <div key={index} className="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
                         <Award size={16} className="text-yellow-400 flex-shrink-0" />
@@ -692,10 +864,6 @@ const ModernPortfolio = () => {
                       <Linkedin size={16} className="text-blue-400" />
                       <span className="text-xs text-gray-300 group-hover:text-white transition-colors">linkedin.com/in/yagizeraslan</span>
                     </a>
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
-                      <Book size={16} className="text-green-400" />
-                      <span className="text-xs text-gray-300">+90 536 957 2042</span>
-                    </div>
                   </div>
                 )}
               </div>
@@ -762,81 +930,125 @@ const ModernPortfolio = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
-              {projects[activeCategory].map((project, index) => (
-                <div 
-                  key={project.id} 
-                  className="group relative bg-white/5 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/20 hover:border-cyan-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-400/40"
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                    animation: 'fadeInUp 0.6s ease-out forwards',
-                  }}
-                >
-                  {/* Featured Badge */}
-                  {project.featured && (
-                    <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                      <Star size={12} />
-                      Featured
-                    </div>
-                  )}
-
-                  {/* Image Container */}
-                  <div className="relative w-full aspect-[16/10] overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/api/placeholder/480/320';
+              {projects[activeCategory].map((project, index) => {
+                // Minimalist Astronomy Card
+                if (activeCategory === 'Astronomy') {
+                  return (
+                    <div
+                      key={project.id}
+                      className="group relative bg-white/5 backdrop-blur-xl rounded-xl overflow-hidden border border-white/20 hover:border-cyan-400/60 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-cyan-400/40 flex flex-col items-center"
+                      style={{
+                        width: '100%',
+                        maxWidth: '320px',
+                        margin: '0 auto',
+                        animationDelay: `${index * 100}ms`,
+                        animation: 'fadeInUp 0.6s ease-out forwards',
                       }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    {/* Link Button */}
-                    {project.link && (
-                      <a 
-                        href={project.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="absolute top-4 right-4 bg-white/20 backdrop-blur-lg p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/30 hover:scale-110"
-                      >
-                        <ExternalLink size={16} className="text-white" />
-                      </a>
+                    >
+                      <div className="relative w-full" style={{ aspectRatio: '4/3', background: '#222' }}>
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          style={{ aspectRatio: '4/3' }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = '/api/placeholder/480/320';
+                          }}
+                        />
+                        {project.link && (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="absolute top-2 right-2 bg-white/20 backdrop-blur-lg p-2 rounded-full opacity-80 hover:bg-white/30 hover:scale-110 transition-all duration-300"
+                          >
+                            <ExternalLink size={14} className="text-white" />
+                          </a>
+                        )}
+                      </div>
+                      <div className="p-3 w-full flex flex-col items-center">
+                        <h3 className="text-base font-semibold text-white text-center line-clamp-2 group-hover:text-cyan-300 transition-colors duration-300">
+                          {project.title}
+                        </h3>
+                      </div>
+                    </div>
+                  );
+                }
+                // Default Card for other categories
+                return (
+                  <div 
+                    key={project.id} 
+                    className="group relative bg-white/5 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/20 hover:border-cyan-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-400/40"
+                    style={{
+                      animationDelay: `${index * 100}ms`,
+                      animation: 'fadeInUp 0.6s ease-out forwards',
+                    }}
+                  >
+                    {/* Featured Badge */}
+                    {project.featured && (
+                      <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                        <Star size={12} />
+                        Featured
+                      </div>
                     )}
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-white mb-3 line-clamp-2 group-hover:text-cyan-300 transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    
-                    <p className="text-gray-300 text-sm mb-4 line-clamp-3 leading-relaxed">
-                      {project.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.slice(0, 4).map((tag) => (
-                        <span 
-                          key={tag} 
-                          className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 text-purple-200 px-3 py-1 rounded-lg text-xs font-medium backdrop-blur-sm"
+                    {/* Image Container */}
+                    <div className="relative w-full aspect-[16/10] overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/api/placeholder/480/320';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      {/* Link Button */}
+                      {project.link && (
+                        <a 
+                          href={project.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="absolute top-4 right-4 bg-white/20 backdrop-blur-lg p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/30 hover:scale-110"
                         >
-                          {tag}
-                        </span>
-                      ))}
-                      {project.tags.length > 4 && (
-                        <span className="bg-white/10 border border-white/20 text-gray-300 px-3 py-1 rounded-lg text-xs font-medium">
-                          +{project.tags.length - 4}
-                        </span>
+                          <ExternalLink size={16} className="text-white" />
+                        </a>
                       )}
                     </div>
-                  </div>
 
-                  {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"></div>
-                  <div className="absolute inset-0 shadow-[0_0_50px_rgba(34,211,238,0.4)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"></div>
-                </div>
-              ))}
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="text-lg font-bold text-white mb-3 line-clamp-2 group-hover:text-cyan-300 transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-300 text-sm mb-4 line-clamp-3 leading-relaxed">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.slice(0, 4).map((tag) => (
+                          <span 
+                            key={tag} 
+                            className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 text-purple-200 px-3 py-1 rounded-lg text-xs font-medium backdrop-blur-sm"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                        {project.tags.length > 4 && (
+                          <span className="bg-white/10 border border-white/20 text-gray-300 px-3 py-1 rounded-lg text-xs font-medium">
+                            +{project.tags.length - 4}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Hover Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"></div>
+                    <div className="absolute inset-0 shadow-[0_0_50px_rgba(34,211,238,0.4)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"></div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
