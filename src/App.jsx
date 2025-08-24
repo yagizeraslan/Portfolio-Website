@@ -75,6 +75,14 @@ const ModernPortfolio = () => {
       },
       {
         id: 4,
+        title: 'Egg VR',
+        description: 'A multiplayer social VR experience where players become eggs and navigate oversized kitchen environments using unique hand-based locomotion inspired by Gorilla Tag. Players run, climb, and jump through air ducts and kitchen landscapes using only hand and arm movements',
+        image: 'https://cdn.sidequestvr.com/file/583228/04_eggvrlogo.png?size=512',
+        link: 'https://www.meta.com/experiences/egg-vr/7275543385800661/',
+        tags: ['Unity', 'C#', 'Scriptable Objects', 'Meta SDK', 'DOTween']
+      },
+      {
+        id: 5,
         title: 'Blind Fastener Training',
         description: 'VR training simulation for Turkish Aerospace Industries. High-fidelity 3D models and realistic physics for blind fastener applications. Achieved 40% increase in training effectiveness with real-time feedback.',
         image: 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Project_Thumbnails/Blind_Fastener.webp',
