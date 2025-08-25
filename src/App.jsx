@@ -236,6 +236,30 @@ const ModernPortfolio = () => {
         image: 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Project_Thumbnails/Claude_AI_API.jpg',
         link: 'https://github.com/yagizeraslan/Claude-Unity',
         tags: ['Unity', 'C#', 'AI Integration', 'LLM', 'API', 'Open Source']
+      },
+      {
+        id: 3,
+        title: 'Qwen-Unity',
+        description: 'A clean, modular Unity integration for Qwen\'s powerful LLMs — chat, reasoning, and task automation made easy',
+        image: 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Project_Thumbnails/Qwen_AI_API.jpg',
+        link: 'https://github.com/yagizeraslan/Qwen-Unity',
+        tags: ['Unity', 'C#', 'AI Integration', 'LLM', 'API', 'Open Source']
+      },
+      {
+        id: 4,
+        title: 'Grok-Unity',
+        description: 'A clean, modular Unity integration for Grok\'s powerful LLMs — chat, reasoning, and task automation made easy',
+        image: 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Project_Thumbnails/Grok_AI_API.jpg',
+        link: 'https://github.com/yagizeraslan/Grok-Unity',
+        tags: ['Unity', 'C#', 'AI Integration', 'LLM', 'API', 'Open Source']
+      },
+      {
+        id: 5,
+        title: 'Gemini-Unity',
+        description: 'A clean, modular Unity integration for Gemini\'s powerful LLMs — chat, reasoning, and task automation made easy',
+        image: 'https://raw.githubusercontent.com/yagizeraslan/MyPortfolio/refs/heads/main/Project_Thumbnails/Gemini_AI_API.jpg',
+        link: 'https://github.com/yagizeraslan/Gemini-Unity',
+        tags: ['Unity', 'C#', 'AI Integration', 'LLM', 'API', 'Open Source']
       }
     ],
     Freelance: [
