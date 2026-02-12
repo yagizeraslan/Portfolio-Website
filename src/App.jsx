@@ -1,5 +1,158 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Mail, Linkedin, ExternalLink, Smartphone, Headset, Globe, Briefcase, Award, Camera, Menu, X, Star, Zap, Rocket, ChevronDown, ChevronRight, Github, ArrowUpRight, Play, MapPin, GraduationCap, Building2, ArrowDown } from 'lucide-react';
+
+// Hook for tracking mouse position as percentage
+function useMousePosition() {
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth) * 100,
+        y: (e.clientY / window.innerHeight) * 100,
+      });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+  return mousePosition;
+}
+
+// Hook for tracking scroll progress (0-100)
+function useScrollProgress() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setProgress(scrollPercent);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  return progress;
+}
+
+// Particle Network Background Component
+function ParticleBackground() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    let animationFrameId;
+    let particles = [];
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5; // 0.5-2.5px
+        this.speedX = (Math.random() - 0.5) * 0.5; // ±0.5px/frame
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random() * 0.5 + 0.1; // 0.1-0.6
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(220, 38, 38, ${this.opacity})`;
+        ctx.fill();
+      }
+    }
+
+    const init = () => {
+      particles = [];
+      const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 15000));
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    };
+
+    const connectParticles = () => {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 100) { // 100px connection distance
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(220, 38, 38, ${0.1 * (1 - distance / 100)})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      connectParticles();
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    resizeCanvas();
+    init();
+    animate();
+
+    const handleResize = () => {
+      resizeCanvas();
+      init();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 1 }}
+    />
+  );
+}
+
+// Scroll Progress Bar Component
+function ScrollProgressBar({ progress }) {
+  return (
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: `${progress}%`,
+      height: '4px',
+      background: 'linear-gradient(90deg, #ef4444, #ff0040)',
+      zIndex: 200,
+      transition: 'width 0.1s ease-out',
+    }} />
+  );
+}
 
 function useReveal(threshold = 0.15) {
   const ref = useRef(null);
@@ -44,13 +197,16 @@ function Section({ children, className = '', id = '' }) {
 
 function GridBG() {
   return (
-    <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.022 }}>
-      <svg width="100%" height="100%">
-        <defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ff2020" strokeWidth="0.4" />
-        </pattern></defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-      </svg>
+    <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.3 }}>
+      <div style={{
+        width: '100%',
+        height: '100%',
+        backgroundImage: `
+          linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px)
+        `,
+        backgroundSize: '50px 50px',
+      }} />
     </div>
   );
 }
@@ -244,6 +400,10 @@ export default function Portfolio() {
   const [scrollY, setScrollY] = useState(0);
   const [heroLoaded, setHeroLoaded] = useState(false);
 
+  // New effects hooks
+  const mousePosition = useMousePosition();
+  const scrollProgress = useScrollProgress();
+
   useEffect(() => {
     setTimeout(() => setHeroLoaded(true), 100);
     const onScroll = () => setScrollY(window.scrollY);
@@ -329,7 +489,29 @@ export default function Portfolio() {
   return (
     <div style={{ background: '#050505', color: '#e8e8e8', minHeight: '100vh', fontFamily: "'Outfit', system-ui, sans-serif", overflowX: 'hidden', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
       <style>{CSS}</style>
+
+      {/* Scroll Progress Bar */}
+      <ScrollProgressBar progress={scrollProgress} />
+
+      {/* Grid Pattern Background */}
       <GridBG />
+
+      {/* Particle Network */}
+      <ParticleBackground />
+
+      {/* Mouse Glow Effect */}
+      <div
+        style={{
+          position: 'fixed',
+          inset: 0,
+          opacity: 0.3,
+          pointerEvents: 'none',
+          zIndex: 1,
+          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(220, 38, 38, 0.15) 0%, transparent 50%)`,
+        }}
+      />
+
+      {/* Floating Orbs */}
       <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
         <div className="orb orb-1" style={{ transform: `translateY(${scrollY * 0.05}px)` }} />
         <div className="orb orb-2" style={{ transform: `translateY(${scrollY * -0.03}px)` }} />
