@@ -248,8 +248,10 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); -web
 .nav-logo { font-weight: 800; font-size: 22px; letter-spacing: -1px; background: none; border: none; color: var(--text); cursor: pointer; font-family: var(--font); }
 .logo-accent { color: var(--accent); }
 .nav-links-desktop { display: flex; gap: 4px; }
-.nav-link { background: none; border: none; color: var(--text-muted); font-family: var(--font); font-size: 14px; font-weight: 500; padding: 8px 16px; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s; }
-.nav-link:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.nav-link { position: relative; background: none; border: none; color: #a3a3a3; font-family: var(--font); font-size: 14px; font-weight: 500; padding: 8px 16px; border-radius: var(--radius-sm); cursor: pointer; transition: color 0.3s ease, transform 0.3s ease; }
+.nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, #dc2626, #ff0040); transition: width 0.3s ease; }
+.nav-link:hover { color: #ffffff; transform: scale(1.05); }
+.nav-link:hover::after { width: 75%; }
 .nav-mobile-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); padding: 8px; border-radius: var(--radius-sm); cursor: pointer; }
 .nav-mobile-dropdown { display: none; flex-direction: column; padding: 8px 24px 16px; border-top: 1px solid var(--border); }
 .nav-mobile-link { background: none; border: none; color: var(--text-muted); font-family: var(--font); font-size: 15px; padding: 12px 0; text-align: left; cursor: pointer; border-bottom: 1px solid var(--border); }
