@@ -202,8 +202,8 @@ function GridBG() {
         width: '100%',
         height: '100%',
         backgroundImage: `
-          linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px)
+          linear-gradient(rgba(220, 38, 38, 0.18) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(220, 38, 38, 0.18) 1px, transparent 1px)
         `,
         backgroundSize: '50px 50px',
       }} />
