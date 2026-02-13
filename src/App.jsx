@@ -631,7 +631,7 @@ export default function Portfolio() {
         </div>
       </Section>
 
-      <footer className="site-footer"><span>© 2025 Yağız Eraslan</span><span className="footer-sep">·</span><span>Built with React</span></footer>
+      <footer className="site-footer"><span>© 2025 Yağız Eraslan</span></footer>
     </div>
   );
 }
