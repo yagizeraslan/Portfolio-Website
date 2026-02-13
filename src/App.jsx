@@ -149,7 +149,7 @@ function ScrollProgressBar({ progress }) {
       height: '4px',
       background: 'linear-gradient(90deg, #ef4444, #ff0040)',
       zIndex: 200,
-      transition: 'width 0.1s ease-out',
+      transition: 'width 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
     }} />
   );
 }
@@ -397,7 +397,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); -web
 `;
 
 export default function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState('XR');
+  const [activeCategory, setActiveCategory] = useState('VR');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [heroLoaded, setHeroLoaded] = useState(false);
@@ -457,8 +457,8 @@ export default function Portfolio() {
   };
 
   const categories = [
-    { id: 'XR', name: 'Mixed Reality', icon: <Headset size={16} /> },
     { id: 'VR', name: 'Virtual Reality', icon: <Headset size={16} /> },
+    { id: 'XR', name: 'Mixed Reality', icon: <Headset size={16} /> },
     { id: 'Mobile', name: 'Mobile', icon: <Smartphone size={16} /> },
     { id: 'Web', name: 'Web', icon: <Globe size={16} /> },
     { id: 'GitHub', name: 'Open Source', icon: <Github size={16} /> },
